@@ -16,6 +16,8 @@ spec:
         app: {{ include "cert-manager-webhook-cloudns.name" . }}
     spec:
       serviceAccountName: {{ include "cert-manager-webhook-cloudns.fullname" . }}
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
